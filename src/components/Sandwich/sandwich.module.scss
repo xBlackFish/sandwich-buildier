@@ -1,0 +1,30 @@
+.sandwich {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  height: 300px;
+  overflow: scroll;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (min-width: 500px) and (min-heigth: 400px) {
+  .sandwich {
+    width: 350px;
+    height: 300px;
+  }
+}
+
+@media (min-width: 500px) and (min-heigth: 401px) {
+  .sandwich {
+    width: 450px;
+    height: 400px;
+  }
+}
+
+@media (min-width: 1000px) and (min-heigth: 700px) {
+  .sandwich {
+    width: 700px;
+    height: 600px;
+  }
+}

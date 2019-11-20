@@ -1,0 +1,19 @@
+.control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0; 
+}
+.label {
+    width: 80px;
+}
+
+.button {
+    display: block;
+    font: inherit;
+    padding: 2px;
+    margin: 0 5px;
+    width: 40px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
