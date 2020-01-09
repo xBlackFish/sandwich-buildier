@@ -32,32 +32,19 @@ class SandwichBuilder extends React.Component {
   purchaseCancelHandler = () => this.setState({ purchasing: false });
 
   purchaseContinueHandler = () => {
-    const { ingredients, totalPrice } = this.state;
 
-    this.setState({ loading: true });
+    const queryParams = [];
+    for(let i in this.state.ingredients) {
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+    }
 
-    const order = {
-      ingredients: ingredients,
-      totalPrice: totalPrice,
-      customer: {
-        name: "Joe Doe",
-        adress: {
-          street: "Green Street 123"
-        },
-        email: "test@test.pl"
-      }
-    };
-
-    axios
-      .post("/orders.json", order)
-      .then(res => {
-        this.setState({ loading: false, purchasing: false });
-      })
-      .catch(e => {
-        this.setState({ loading: false, purchasing: false });
-        console.log(e);
-      });
-  };
+    queryParams.push('price=' + this.state.totalPrice)
+    const queryString = queryParams.join('&');
+    this.props.history.push({
+      pathname: '/checkout',
+      search: '?' + queryString
+    });
+  }
 
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
